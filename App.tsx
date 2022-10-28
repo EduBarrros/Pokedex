@@ -1,13 +1,15 @@
 import { ThemeProvider } from 'styled-components';
 import theme from './src/global/styles/theme';
 import { Welcome } from './src/pages/welcome';
+import { Home } from './src/pages/home';
 
 export default function App() {
   return (
     <ThemeProvider
       theme={theme}
     >
-      <Welcome />
+      {/* <Welcome /> */}
+      <Home />
     </ThemeProvider>
   );
 }
