@@ -1,21 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { FlatList } from "react-native";
+import { Card } from "../../components/Card";
 import api from "../../services/api";
 import * as S from './styles';
-
-type PokemonTypes = {
-    type: string;
-}
-
-type Pokemon = {
-    name: string;
-    url: string;
-    id: number;
-    types: PokemonTypes[]
-}
+import { PokemonType, Pokemon} from '../../components/Card'
 
 type Request = {
     id: number;
-    types: PokemonTypes[]
+    types: PokemonType[]
 }
 
 export const Home = () => {
@@ -58,7 +50,12 @@ export const Home = () => {
 
     return (
         <S.Container>
-            
+            <FlatList
+                data={pokemons}
+                renderItem={({ item: Pokemon }) => <Card data={Pokemon} />}
+                keyExtractor={item => item.id.toString()}
+                showsVerticalScrollIndicator={false}
+            />
         </S.Container>
     )
 }
