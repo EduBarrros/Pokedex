@@ -74,7 +74,7 @@ export const PokemonType = styled.View<PokemonType>`
         align-items: center;
         background-color: ${
         //@ts-ignore
-        theme.colors.backgroundCard[type]
+        theme.colors.boxType[type]
         };
     `}
 `;
