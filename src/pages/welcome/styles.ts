@@ -20,7 +20,7 @@ export const Footer = styled.View`
         border-top-right-radius: 20px;
         border-top-left-radius: 20px;
         height: 30%;
-        background-color: ${theme.colors.text};
+        background-color: ${theme.colors.background};
         padding: 20px;
     `}
 `;
@@ -28,7 +28,7 @@ export const Footer = styled.View`
 export const Title = styled.Text`
     ${({ theme }) => css`
         font-size: 40px;
-        color: ${theme.colors.text};
+        color: ${theme.colors.background};
         margin-top: 20px;
     `}
 `;
@@ -37,7 +37,7 @@ export const SubTitle = styled.Text`
     ${({ theme }) => css`
         font-size: 16px;
         margin-top: 20px;
-        color: ${theme.colors.text}
+        color: ${theme.colors.background}
         `}
 `;
 

@@ -1,15 +1,14 @@
-import { ThemeProvider } from 'styled-components';
 import theme from './src/global/styles/theme';
-import { Welcome } from './src/pages/welcome';
-import { Home } from './src/pages/home';
+import { ThemeProvider } from 'styled-components';
+import { Routes } from './src/routes';
+
 
 export default function App() {
   return (
     <ThemeProvider
       theme={theme}
     >
-      {/* <Welcome /> */}
-      <Home />
+      <Routes />
     </ThemeProvider>
   );
 }

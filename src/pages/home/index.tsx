@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import * as S from './styles';
+import api from "../../services/api";
 import { FlatList } from "react-native";
 import { Card } from "../../components/Card";
-import api from "../../services/api";
-import * as S from './styles';
-import { PokemonType, Pokemon } from '../../components/Card'
-import { FadeAnimation } from "../../components/FadeAnimation";
+import { PokemonType, Pokemon } from '../../components/Card';
+import PokeballHeader from '../../assets/img/pokeball.png';
+import { useNavigation } from "@react-navigation/native";
+
 
 type Request = {
     id: number;
@@ -13,6 +15,7 @@ type Request = {
 
 export const Home = () => {
 
+    const navigation = useNavigation()
     const [pokemons, setPokemons] = useState<Pokemon[]>([])
 
     useEffect(() => {
@@ -48,17 +51,35 @@ export const Home = () => {
         }
     }
 
+    const HandleNavigation = (pokemonId: number) => {
+        navigation.navigate('about', { pokemonId })
+    }
 
     return (
         <S.Container>
             <FlatList
                 data={pokemons}
                 renderItem={({ item: Pokemon }) =>
-                    <FadeAnimation>
-                        <Card data={Pokemon} />
-                    </FadeAnimation>}
+                    <Card
+                        data={Pokemon}
+                        onPress={() => HandleNavigation(Pokemon.id)}
+                    />
+                }
                 keyExtractor={item => item.id.toString()}
                 showsVerticalScrollIndicator={false}
+                contentContainerStyle={{
+                    paddingHorizontal: 20
+                }}
+                ListHeaderComponent={
+                    <>
+                        {/* <S.Header
+                            source={PokeballHeader}
+                        /> */}
+                        <S.Title>
+                            Pokédex
+                        </S.Title>
+                    </>
+                }
             />
         </S.Container>
     )
