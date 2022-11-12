@@ -10,6 +10,7 @@ export const Welcome = () => {
     const navigation = useNavigation();
 
     const HandleNavigation = () => {
+        //@ts-ignore
         navigation.navigate('home')
     }
 

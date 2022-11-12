@@ -52,6 +52,7 @@ export const Home = () => {
     }
 
     const HandleNavigation = (pokemonId: number) => {
+        //@ts-ignore
         navigation.navigate('about', { pokemonId })
     }
 
