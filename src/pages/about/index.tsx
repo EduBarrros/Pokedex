@@ -96,7 +96,9 @@ export const About = () => {
                 </S.LoadingText>
             </S.LoadingContainer>
             :
-            <S.ScrollContainer>
+            <S.ScrollContainer
+                showHorizontalScroll={false}
+            >
                 <S.Header type={pokemon?.types[0]?.type?.name}>
                     <S.BackButton onPress={() => HandleGoBack()}>
                         <Feather name='chevron-left' size={24} color='#fff' />
@@ -124,13 +126,44 @@ export const About = () => {
                                 </S.PokemonType>
                             )}
                         </S.PokemonTypeContainer>
-                        <S.DotsImage source={Dots}/>
+                        <S.DotsImage source={Dots} />
                     </S.Content>
                 </S.Header>
                 <S.Container>
                     <S.Title type={pokemon.types[0].type.name}>
                         Base Stats
                     </S.Title>
+                    {
+                        pokemon.stats.map((atb) =>
+                            <S.StatsBar key={atb.stat.name}>
+                                <S.Attributes>
+                                    {atb.stat.name}
+                                </S.Attributes>
+                                <S.AttributesValue>
+                                    {atb.base_stat}
+                                </S.AttributesValue>
+                                <S.ContentBar>
+                                    <S.ProgressBar
+                                        type={pokemon.types[0].type.name}
+                                        borderWidth={0}
+                                        progress={150}
+                                        width={atb.base_stat}
+                                        color={pokemon.color}
+                                    />
+                                </S.ContentBar>
+                            </S.StatsBar>
+                        )}
+                        <S.Title type={pokemon.types[0].type.name}>
+                            Abilities
+                        </S.Title>
+
+                        {
+                            pokemon.abilities.map((abl) => 
+                                <S.Ability>
+                                    {abl.ability.name}
+                                </S.Ability>
+                            )
+                        }
                 </S.Container>
             </S.ScrollContainer>
     )

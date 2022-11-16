@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components/native'
+import * as Progress from 'react-native-progress';
 
 type TypeProps = {
     type: string
@@ -66,7 +67,7 @@ export const PokemonName = styled.Text`
         font-weight: bold;
         font-size: 28px;
         line-height: 38px;
-        color: ${theme.colors.background}
+        color: ${theme.colors.background};
     `}
 `
 
@@ -128,7 +129,7 @@ export const Container = styled.View`
     `}
 `
 export const Title = styled.Text<TypeProps>`
-    ${({theme, type}) => css`
+    ${({ theme, type }) => css`
         font-style: normal;
         font-size: 16px;
         font-weight: bold;
@@ -138,6 +139,55 @@ export const Title = styled.Text<TypeProps>`
         //@ts-ignore
         theme.colors.boxType[type]
         };
+    `}
+`
+
+export const StatsBar = styled.View`
+    width: 100%;
+    padding: 10px 20px;
+    flex-direction: row;
+    align-items: center;
+`
+
+export const Attributes = styled.Text`
+    ${({ theme }) => css`
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 14px;
+        text-transform: capitalize;
+        color: ${theme.colors.light_text};
+        width: 110px;
+    `}
+`
+export const AttributesValue = styled.Text`
+    ${({ theme }) => css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        text-align: right;
+        color: ${theme.colors.detail};
+        margin-left: 20px;
+    `}
+`
+
+export const ContentBar = styled.View`
+    margin-left: 20px;
+`
+
+export const ProgressBar = styled(Progress.Bar) <TypeProps>`
+
+`
+export const Ability = styled.Text`
+    ${({ theme }) => css`
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 19px;
+        padding: 10px 20px;
+        color: ${theme.colors.detail};
+        text-transform: capitalize;
     `}
 `
 
